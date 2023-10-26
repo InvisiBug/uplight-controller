@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "nodemon --exec \"ts-node \" ./src/index.ts",
-    "build": "tsc && yarn copy:schema",
+    "build": "tsc",
     "push--live": "./bin/push--live.sh",
     "push--test": "./bin/push--test.sh",
     "deploy": "yarn push && ./bin/deploy.sh",

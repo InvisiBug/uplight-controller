@@ -1,0 +1,16 @@
+name: kavanest-test-simulator
+
+namespace: kavanest-test
+
+deployment:
+  - name: kavanest-test-simulator
+    image: 192.168.1.61:5000/kavanest-simulator:test
+    ports:
+    - port: 1883
+    - port: 9001
+    env:
+      - name: MQTT
+        value: mqtt://kavanest-test-mqtt
+
+      - name: MQTT_LIVE
+        value: mqtt://192.168.1.46
