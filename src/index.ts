@@ -3,10 +3,10 @@ import ColourFade from "./lib/colourFade";
 
 let client: mqtt.MqttClient = mqtt.connect("mqtt://uplights.kavanet.io");
 
-const colourFade = new ColourFade(client, 1);
+const colourFade = new ColourFade(client);
 
 client.on("connect", () => {
-  console.log("Connected to MQTT broker");
+  console.log("📡 Connected to uplights MQTT broker 📡");
 });
 
 setInterval(() => {

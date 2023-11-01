@@ -12,18 +12,12 @@
     "push--test": "./bin/push--test.sh",
     "deploy": "yarn push && ./bin/deploy.sh",
     "deploy--live": "./bin/deploy--live.sh",
-    "deploy--test": "./bin/deploy--test.sh",
-    "up": "clear && ./bin/start-container.sh",
-    "down": "docker compose down",
-    "logs": "docker logs kavanest-api -f",
-    "copy:schema": "cp -r ./src/schema ./dist/schema"
+    "deploy--test": "./bin/deploy--test.sh"
   },
   "dependencies": {
-    "@types/express": "^4.17.13",
     "@types/node": "^16.11.5",
     "dotenv": "^10.0.0",
     "dotenv-expand": "^5.1.0",
-    "express": "^4.17.1",
     "mqtt": "^4.2.8",
     "node": "^20.7.0",
     "nodemon": "^3.0.1",

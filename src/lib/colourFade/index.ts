@@ -1,6 +1,5 @@
 import { MqttClient } from "mqtt";
 export default class ColourFade {
-  totalLEDs: number;
   client: MqttClient;
   colours = [
     // https://www.w3schools.com/colors/colors_picker.asp
@@ -21,8 +20,7 @@ export default class ColourFade {
   currentMillis: number = 0;
   lastMillis: number = 0;
 
-  constructor(client: MqttClient, totalLEDs: number) {
-    this.totalLEDs = totalLEDs;
+  constructor(client: MqttClient) {
     this.client = client;
   }
 
@@ -37,23 +35,12 @@ export default class ColourFade {
       this.chooseNewColour();
     }
 
-    // for (let i = 0; i < this.totalLEDs; i++) {
-    //   currentLED[i].setRGB(oldRed, oldGreen, oldBlue);
-    // }
-    // FastLED.show();
-
-    // let colours = [];
-
-    // for (let i = 0; i < 3; i++) {
-    //   const colour = availableColours[Math.floor(Math.random() * availableColours.length)];
-    //   colours.push([hexToRgb(colour)[0], hexToRgb(colour)[1], hexToRgb(colour)[2]]);
-    // }
-
     this.leds = [[this.oldRed, this.oldGreen, this.oldBlue]];
 
     this.client.publish("Uplight Control", JSON.stringify(this.leds));
-    console.log(this.leds);
-    console.log("Uplights updated");
+    // console.log(this.leds);
+    // console.log("Uplights updated");
+    console.log("Running colour fade");
   }
 
   upDown(newVal: number, oldVal: number): number {
