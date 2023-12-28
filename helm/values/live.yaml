@@ -1,16 +1,18 @@
 name: uplights
 
 namespace: uplights
+env:
+  APP_VERSION: 2a0740404d466e24146b0b7e6df0e5fb0f05a99b
 
 deployment:
-  - name: uplights-broker
-    image: eclipse-mosquitto:1.6
-    ports:
-    - port: 1883
-    - port: 9001
+  # - name: uplights-broker
+  #   image: eclipse-mosquitto:1.6
+  #   ports:
+  #   - port: 1883
+  #   - port: 9001
 
   - name: uplights-controller
-    image: 192.168.1.61:5000/uplights:live
+    image: invisibug/uplights-controller
     ports:
     - port: 27017
     env:
@@ -20,16 +22,16 @@ deployment:
     - name: MQTT
       value: mqtt:mqtt.kavanet.io
 
-service:
-  clusterIP:
-    - name: uplights
-      selector: uplights
-      ports:
-        - port: 3100
+# service:
+#   clusterIP:
+#     - name: uplights
+#       selector: uplights
+#       ports:
+#         - port: 3100
 
-ingress:
-  - name: uplights.kavanet.io
-    selector: uplights-broker
-    path: /
-    port: 1883
-    host: uplights.kavanet.io
+# ingress:
+#   - name: uplights.kavanet.io
+#     selector: uplights-broker
+#     path: /
+#     port: 1883
+#     host: uplights.kavanet.io
