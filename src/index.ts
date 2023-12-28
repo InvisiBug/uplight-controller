@@ -11,6 +11,7 @@ client.on("connect", () => {
 
 setInterval(() => {
   colourFade.run();
+
   // let colours = [];
   // for (let i = 0; i < 3; i++) {
   //   const colour = availableColours[Math.floor(Math.random() * availableColours.length)];
