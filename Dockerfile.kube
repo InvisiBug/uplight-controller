@@ -1,28 +1,24 @@
-## Need a build stage to compile the typescript
-
-## Build stage
-FROM arm64v8/node:14 as build
-
-COPY . .
-
-RUN yarn install
-RUN yarn build
-
-
-## Deploy stage
+# Use Node version 14
 FROM arm64v8/node:14
 
+# Create app directory within container
 WORKDIR /usr/src/app
 
-COPY --from=build ./dist ./
-
+# Install app dependencies
+# A wild card is used to ensure both package.json AND package-lock.json are copied
 COPY package*.json ./
 COPY tsconfig.json ./
 
-# ENV NODE_ENV production
+
+# Prevents unnecessary packages from being installed
+# ENV NODE_ENV=production
+ENV NODE_ENV production
 RUN yarn install
+
+# Copy across source folder
+COPY ./dist ./
 
 EXPOSE 1883
 EXPOSE 9001
-
+# CMD ["npm", "start"]
 CMD ["node","index.js"]
