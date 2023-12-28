@@ -2,7 +2,7 @@ name: uplights
 
 namespace: uplights
 env:
-  APP_VERSION: cd1c7ef77ac99857172a7fee5f3ac3d903c66f37
+  APP_VERSION: 2a0740404d466e24146b0b7e6df0e5fb0f05a99b
 
 deployment:
   # - name: uplights-broker
